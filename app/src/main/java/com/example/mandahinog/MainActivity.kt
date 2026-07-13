@@ -1,6 +1,8 @@
 package com.example.mandahinog
 
 import android.content.res.Configuration
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -94,23 +97,40 @@ fun BusinessCard() {
                 )
 
                 Spacer(Modifier.height(24.dp))
+                val context = LocalContext.current
+
                 ContactRow(
                     icon = Icons.Default.Phone,
                     label = "+63 900 000 0000",
                     onClickLabel = "Call phone number"
-                ) { /* TODO: launch dialer intent */ }
+                ) {
+                    val intent = Intent(Intent.ACTION_DIAL).apply {
+                        data = Uri.parse("tel:+639000000000")
+                    }
+                    context.startActivity(intent)
+                }
 
                 ContactRow(
                     icon = Icons.Default.Email,
                     label = "jhan@example.com",
                     onClickLabel = "Send email"
-                ) { /* TODO: launch email intent */ }
+                ) {
+                    val intent = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:jhan@example.com")
+                    }
+                    context.startActivity(intent)
+                }
 
                 ContactRow(
                     icon = Icons.Default.LocationOn,
                     label = "Cagayan de Oro City, PH",
                     onClickLabel = "Open location"
-                ) { /* TODO: launch maps intent */ }
+                ) {
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                        data = Uri.parse("geo:0,0?q=Cagayan de Oro City, PH")
+                    }
+                    context.startActivity(intent)
+                }
             }
         }
     }
