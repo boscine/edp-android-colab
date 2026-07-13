@@ -1,49 +1,56 @@
 package com.example.mandahinog
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.Share
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mandahinog.ui.theme.MandahinogTheme
 
+
+private object Brand {
+    val Background = Color(0xFFF4F2F1)
+    val Primary = Color(0xFF771C1B)
+    val AvatarSize = 120.dp
+    val BorderWidth = 2.dp
+    val NameSize = 24.sp
+    val TitleSize = 16.sp
+}
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             MandahinogTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = Color(0xFFD2E8D4) // A light greenish background
+                    color = Brand.Background
                 ) {
                     BusinessCard()
                 }
@@ -57,89 +64,111 @@ fun BusinessCard() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .background(Brand.Background),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.Center
     ) {
-        Spacer(modifier = Modifier.height(50.dp))
-        
-        // Main Info Section
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+        Card(
+            modifier = Modifier.padding(24.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
-            Box(
-                modifier = Modifier
-                    .size(100.dp)
-                    .background(Color(0xFF073042)),
-                contentAlignment = Alignment.Center
+            Column(
+                modifier = Modifier.padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                Icon(
-                    imageVector = Icons.Default.AccountCircle,
-                    contentDescription = null,
-                    modifier = Modifier.size(80.dp),
-                    tint = Color(0xFF3DDC84) // Android Green
-                )
-            }
-            Text(
-                text = "Jennifer Doe",
-                fontSize = 40.sp,
-                fontWeight = FontWeight.ExtraLight,
-                modifier = Modifier.padding(top = 8.dp)
-            )
-            Text(
-                text = "Android Developer Extraordinaire",
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF006D3B),
-                modifier = Modifier.padding(top = 4.dp)
-            )
-        }
+                Avatar()
 
-        // Contact Info Section
-        Column(
-            modifier = Modifier
-                .padding(bottom = 50.dp)
-                .width(250.dp)
-        ) {
-            ContactInfoRow(icon = Icons.Default.Phone, text = "+11 (123) 444 555 666")
-            ContactInfoRow(icon = Icons.Default.Share, text = "@AndroidDev")
-            ContactInfoRow(icon = Icons.Default.Email, text = "jen.doe@android.com")
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    text = "Jhan Mandahinog",
+                    fontSize = Brand.NameSize,
+                    fontWeight = FontWeight.Bold,
+                    color = Brand.Primary
+                )
+                Text(
+                    text = "student",
+                    fontSize = Brand.TitleSize,
+                    color = Color.DarkGray
+                )
+
+                Spacer(Modifier.height(24.dp))
+                ContactRow(
+                    icon = Icons.Default.Phone,
+                    label = "+63 900 000 0000",
+                    onClickLabel = "Call phone number"
+                ) { /* TODO: launch dialer intent */ }
+
+                ContactRow(
+                    icon = Icons.Default.Email,
+                    label = "jhan@example.com",
+                    onClickLabel = "Send email"
+                ) { /* TODO: launch email intent */ }
+
+                ContactRow(
+                    icon = Icons.Default.LocationOn,
+                    label = "Cagayan de Oro City, PH",
+                    onClickLabel = "Open location"
+                ) { /* TODO: launch maps intent */ }
+            }
         }
     }
 }
 
 @Composable
-fun ContactInfoRow(icon: ImageVector, text: String) {
+fun Avatar() {
+    Image(
+        painter = painterResource(id = R.drawable.unnamed),
+        contentDescription = "Avatar Image",
+        modifier = Modifier
+            .size(Brand.AvatarSize)
+            .clip(CircleShape)
+            .border(Brand.BorderWidth, Color.White, CircleShape),
+        contentScale = ContentScale.Crop
+    )
+}
+
+@Composable
+fun ContactRow(
+    icon: ImageVector,
+    label: String,
+    onClickLabel: String,
+    onClick: () -> Unit
+) {
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(vertical = 6.dp)
+            .clickable(onClickLabel = onClickLabel) { onClick() },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = Color(0xFF006D3B),
-            modifier = Modifier.size(24.dp)
+            tint = Brand.Primary
         )
-        Spacer(modifier = Modifier.width(20.dp))
-        Text(
-            text = text,
-            fontSize = 14.sp,
-            color = Color.Black
-        )
+        Spacer(Modifier.width(8.dp))
+        Text(label)
     }
 }
 
-@Preview(showBackground = true)
+@Preview(name = "Card - Light", showBackground = true, widthDp = 360)
 @Composable
-fun BusinessCardPreview() {
+fun BusinessCardPreviewLight() {
     MandahinogTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = Color(0xFFD2E8D4)
-        ) {
-            BusinessCard()
-        }
+        BusinessCard()
+    }
+}
+
+@Preview(
+    name = "Card - Dark",
+    showBackground = true,
+    widthDp = 360,
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+fun BusinessCardPreviewDark() {
+    MandahinogTheme {
+        BusinessCard()
     }
 }
