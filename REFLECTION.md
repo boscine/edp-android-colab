@@ -1,0 +1,3 @@
+# Laboratory Activity 2 Reflection
+
+The Profile screen's structure was defined by a `Scaffold` to host the `TopAppBar` (Region A) and `FloatingActionButton` (Region G), while a central `Column` organized the primary content. Regions B and C were handled by a `Box` and a nested `Column` respectively, whereas `Row` containers within `Card` components managed the layout for regions D, E, and F. A key theming decision was utilizing the `primaryContainer` role for the `TopAppBar` background to create a strong visual identity at the top of the screen. This choice ensures that the branding remains prominent and consistent with the defined palette in both light and dark modes.
