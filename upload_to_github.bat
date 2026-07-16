@@ -11,16 +11,18 @@ git checkout -b lab-activity-2 2>nul || git checkout lab-activity-2
 
 :: Stage and Commit
 git add .
-git commit -m "Lab Activity 2: Implementation of Profile Screen and Material 3 Theming"
+git commit -m "Lab Activity 2: Final Submission Version"
 
-:: Pull changes from remote to handle the [rejected] error (merging or rebasing)
-echo Pulling latest changes...
+:: Create a Tag to mark this as its own version
+echo Tagging version v2.0...
+git tag -a v2.0 -m "Laboratory Activity 2 Final Version" -f
+
+:: Pull/Push
+echo Integrating remote changes and pushing...
 git pull origin lab-activity-2 --rebase
-
-:: Push to GitHub
-echo Pushing to GitHub...
 git push -u origin lab-activity-2
+git push origin v2.0 -f
 
 echo.
-echo Done! If the push was successful, please copy the link and submit to GCR.
+echo Done! Version v2.0 has been created and pushed to the lab-activity-2 branch.
 pause
