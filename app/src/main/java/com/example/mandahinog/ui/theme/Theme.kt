@@ -9,31 +9,42 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
     primary = DarkPrimary,
     onPrimary = DarkOnPrimary,
     primaryContainer = DarkPrimaryContainer,
+    onPrimaryContainer = DarkPrimary, // Using primary for content on primaryContainer in dark mode
     secondary = DarkSecondary,
+    onSecondary = DarkOnPrimary,
     surface = DarkSurface,
-    onSurfaceVariant = DarkOnSurfaceVariant
+    onSurface = Color.White,
+    onSurfaceVariant = DarkOnSurfaceVariant,
+    background = DarkSurface,
+    onBackground = Color.White
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = LightPrimary,
     onPrimary = LightOnPrimary,
     primaryContainer = LightPrimaryContainer,
+    onPrimaryContainer = LightPrimary, // Using primary for content on primaryContainer in light mode
     secondary = LightSecondary,
+    onSecondary = LightOnPrimary,
     surface = LightSurface,
-    onSurfaceVariant = LightOnSurfaceVariant
+    onSurface = Color.Black,
+    onSurfaceVariant = LightOnSurfaceVariant,
+    background = LightSurface,
+    onBackground = Color.Black
 )
 
 @Composable
 fun MandahinogTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false, // Set to false to prioritize brand colors as per lab
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

@@ -3,26 +3,21 @@
 git config user.name "Jhan"
 git config user.email "jlmandahinog65115@liceo.edu.ph"
 
-:: Set Remote
+:: Set Remote (if not already set correctly)
 git remote add origin https://github.com/boscine/edp-android-colab.git 2>nul
 
-:: Switch/Create Branch
-git checkout -b lab-activity-2 2>nul || git checkout lab-activity-2
+:: Switch to prelim-handson-exam branch
+echo Switching to prelim-handson-exam branch...
+git checkout prelim-handson-exam 2>nul || git checkout -b prelim-handson-exam
 
 :: Stage and Commit
 git add .
-git commit -m "Lab Activity 2: Final Submission Version"
+git commit -m "Prelim hands-on: my profile screen"
 
-:: Create a Tag to mark this as its own version
-echo Tagging version v2.0...
-git tag -a v2.0 -m "Laboratory Activity 2 Final Version" -f
-
-:: Pull/Push
-echo Integrating remote changes and pushing...
-git pull origin lab-activity-2 --rebase
-git push -u origin lab-activity-2
-git push origin v2.0 -f
+:: Push to GitHub
+echo Pushing to GitHub...
+git push -u origin prelim-handson-exam
 
 echo.
-echo Done! Version v2.0 has been created and pushed to the lab-activity-2 branch.
+echo Done! Please copy the branch link and submit to the class portal with your screenshot.
 pause
