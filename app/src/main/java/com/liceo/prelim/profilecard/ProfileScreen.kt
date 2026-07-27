@@ -55,7 +55,7 @@ fun ProfileScreen() {
             color = MaterialTheme.colorScheme.primary
         )
         Text(
-            text = "BSIT 3-A",
+            text = "BSIT 3-1",
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onBackground
         )
@@ -86,7 +86,7 @@ fun ProfileScreen() {
                 InfoRow(
                     icon = Icons.Default.Class,
                     label = "Section",
-                    value = "3-A"
+                    value = "3-1"
                 )
                 InfoRow(
                     icon = Icons.Default.Phone,
