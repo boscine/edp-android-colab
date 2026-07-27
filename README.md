@@ -1,2 +1,0 @@
-﻿# edp-android-colab
-meh
