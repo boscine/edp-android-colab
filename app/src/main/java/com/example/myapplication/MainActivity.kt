@@ -87,7 +87,7 @@ fun CounterControls(
         Text(text = "Count: $count", fontSize = 24.sp)
         Spacer(Modifier.height(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            Button(onClick = onDecrement) { Text("-") }
+            Button(onClick = onDecrement) { Text("–") }
             Button(onClick = onReset) { Text("Reset") }
             Button(onClick = onIncrement) { Text("+") }
         }
