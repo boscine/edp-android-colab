@@ -52,7 +52,24 @@ fun ProfileForm(state: ProfileUiState, viewModel: ProfileViewModel) {
         }
 
         Spacer(Modifier.height(20.dp))
-        Button(onClick = { viewModel.showPreview() }, modifier = Modifier.fillMaxWidth()) { Text("Preview") }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            OutlinedButton(
+                onClick = { viewModel.clearAll() },
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Clear all")
+            }
+            Button(
+                onClick = { viewModel.showPreview() },
+                enabled = state.name.isNotBlank() && state.email.isNotBlank(),
+                modifier = Modifier.weight(1f)
+            ) {
+                Text("Preview")
+            }
+        }
     }
 }
 

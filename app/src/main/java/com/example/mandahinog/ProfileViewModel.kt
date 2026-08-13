@@ -20,6 +20,8 @@ class ProfileViewModel : ViewModel() {
     fun addSkill() {
         val skill = _uiState.value.newSkill.trim()
         if (skill.isEmpty()) return
+        // Bonus Challenge: Prevent adding a skill that is already in the list
+        if (_uiState.value.skills.any { it.equals(skill, ignoreCase = true) }) return
         _uiState.update { current ->
             current.copy(
                 skills = current.skills + skill,
@@ -32,6 +34,11 @@ class ProfileViewModel : ViewModel() {
         _uiState.update { current ->
             current.copy(skills = current.skills - skill)
         }
+    }
+
+    // Bonus Challenge: Add a Clear all button that resets the form to an empty ProfileUiState()
+    fun clearAll() {
+        _uiState.value = ProfileUiState()
     }
 
     fun showPreview() = _uiState.update { it.copy(isPreview = true) }
