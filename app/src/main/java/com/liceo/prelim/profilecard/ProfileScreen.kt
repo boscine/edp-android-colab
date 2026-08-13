@@ -38,8 +38,8 @@ fun ProfileScreen() {
         // Task 2 — Circular avatar (Updated to use unnamed.jpg)
         Image(
             painter = painterResource(id = R.drawable.unnamed),
-            contentDescription = "Profile Picture",
-            modifier = Modifier
+                contentDescription = "Profile Picture",
+                modifier = Modifier
                 .size(120.dp)
                 .clip(CircleShape)
                 .border(2.dp, MaterialTheme.colorScheme.onPrimary, CircleShape),
