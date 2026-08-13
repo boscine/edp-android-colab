@@ -2,18 +2,21 @@ package com.example.mandahinog.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Light Palette
-val LightPrimary = Color(0xFF771C1B)
-val LightOnPrimary = Color(0xFFFFFFFF)
-val LightPrimaryContainer = Color(0xFFE9C9C8)
-val LightSecondary = Color(0xFF9E4744)
-val LightSurface = Color(0xFFFFFBFF)
-val LightOnSurfaceVariant = Color(0xFF5A4D4C)
+// Maroon & Gold Palette (Light)
+val MaroonPrimary = Color(0xFF800000)
+val MaroonOnPrimary = Color(0xFFFFFFFF)
+val MaroonPrimaryContainer = Color(0xFFFFDDA1)
+val MaroonOnPrimaryContainer = Color(0xFF2B1700)
+val GoldSecondary = Color(0xFFD4AF37)
+val GoldOnSecondary = Color(0xFF000000)
+val LightSurface = Color(0xFFFFF8F6)
+val LightOnSurfaceVariant = Color(0xFF534341)
 
-// Dark Palette
-val DarkPrimary = Color(0xFFE0A3A0)
-val DarkOnPrimary = Color(0xFF511313)
-val DarkPrimaryContainer = Color(0xFF651817)
-val DarkSecondary = Color(0xFFD49B99)
-val DarkSurface = Color(0xFF1A1110)
-val DarkOnSurfaceVariant = Color(0xFFC9B8B7)
+// Maroon & Gold Palette (Dark)
+val DarkMaroonPrimary = Color(0xFFFFB4AB)
+val DarkMaroonOnPrimary = Color(0xFF690005)
+val DarkMaroonPrimaryContainer = Color(0xFF800000)
+val DarkGoldSecondary = Color(0xFFE5C158)
+val DarkSurface = Color(0xFF201A19)
+val DarkOnSurfaceVariant = Color(0xFFD8C2BF)
+
