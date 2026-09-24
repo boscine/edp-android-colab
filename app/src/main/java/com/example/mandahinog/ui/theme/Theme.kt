@@ -1,6 +1,5 @@
 package com.example.mandahinog.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -9,35 +8,34 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DarkMaroonPrimary,
-    onPrimary = DarkMaroonOnPrimary,
-    primaryContainer = DarkMaroonPrimaryContainer,
-    onPrimaryContainer = DarkMaroonPrimary,
-    secondary = DarkGoldSecondary,
-    onSecondary = DarkMaroonOnPrimary,
+    primary = DarkRedPrimary,
+    onPrimary = DarkRedOnPrimary,
+    primaryContainer = DarkRedPrimaryContainer,
+    onPrimaryContainer = DarkRedOnPrimaryContainer,
+    secondary = DarkRedSecondary,
+    onSecondary = DarkRedOnSecondary,
     surface = DarkSurface,
-    onSurface = Color.White,
+    onSurface = DarkOnSurface,
     onSurfaceVariant = DarkOnSurfaceVariant,
-    background = DarkSurface,
-    onBackground = Color.White
+    background = DarkBackground,
+    onBackground = DarkOnBackground
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = MaroonPrimary,
-    onPrimary = MaroonOnPrimary,
-    primaryContainer = MaroonPrimaryContainer,
-    onPrimaryContainer = MaroonOnPrimaryContainer,
-    secondary = GoldSecondary,
-    onSecondary = GoldOnSecondary,
+    primary = RedPrimary,
+    onPrimary = RedOnPrimary,
+    primaryContainer = RedPrimaryContainer,
+    onPrimaryContainer = RedOnPrimaryContainer,
+    secondary = RedSecondary,
+    onSecondary = RedOnSecondary,
     surface = LightSurface,
-    onSurface = Color.Black,
+    onSurface = LightOnSurface,
     onSurfaceVariant = LightOnSurfaceVariant,
-    background = LightSurface,
-    onBackground = Color.Black
+    background = LightBackground,
+    onBackground = LightOnBackground
 )
 
 @Composable
